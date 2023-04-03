@@ -1,7 +1,9 @@
 name: Upload to 1and1hosting via FTP
 
 on:
-  workflow_dispatch:
+  push:
+    branches:
+      - master
   
 jobs:
   deploy:
