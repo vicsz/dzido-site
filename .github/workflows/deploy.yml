@@ -1,0 +1,18 @@
+name: Upload to 1and1hosting via FTP
+
+on:
+  workflow_dispatch:
+  
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      
+    - name: Install FTP client
+      run: sudo apt-get update && sudo apt-get install lftp
+      
+    - name: Upload to 1and1hosting via FTP
+      run: |
+        lftp -c "set ftp:ssl-allow false; open -u ${{ secrets.FTP_USERNAME }},${{ secrets.FTP_PASSWORD }} ${{ secrets.FTP_SERVER }}; mirror -R site .; bye"
