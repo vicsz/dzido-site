@@ -27,5 +27,6 @@ jobs:
         SFTP_HOST: ${{ secrets.SFTP_HOST }}
         SFTP_PORT: 22
       run: |
+        mkdir -p ~/.ssh
         ssh-keyscan -t rsa -p $SFTP_PORT $SFTP_HOST >> ~/.ssh/known_hosts
         rsync -av --rsh="sshpass -p $SFTP_PASSWORD ssh -o StrictHostKeyChecking=no -l $SFTP_USERNAME -p $SFTP_PORT" ./site/ $SFTP_USERNAME@$SFTP_HOST:/
