@@ -1,0 +1,29 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+header {
+    background: #f4f4f4;
+    padding: 1rem;
+}
+
+header h1 {
+    margin: 0;
+}
+
+main, footer {
+    padding: 1rem;
+}
+
+.photo-gallery {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.photo-gallery img {
+    margin: 10px;
+    max-width: 200px;
+    height: auto;
+}
