@@ -5,18 +5,27 @@ on: [push]
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+    - name: Checkout repository
+      uses: actions/checkout@v2
 
-      - name: Install lftp
-        run: |
-          sudo apt-get update && sudo apt-get install -y lftp
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: 14
 
-      - name: Upload Site
-        run: |
-          lftp -u ${{ secrets.SFTP_USERNAME }},${{ secrets.SFTP_PASSWORD }} sftp://${{ secrets.SFTP_HOST }}:22 -e "mirror --reverse --delete site/ /; exit" -o StrictHostKeyChecking=no
+    - name: Install SSH and SFTP plugins
+      run: |
+        sudo apt-get update
+        sudo apt-get install sshpass
 
-      - name: Cleanup
-        run: |
-          rm -rf site
+    - name: Upload files using SFTP
+      env:
+        SFTP_USERNAME: ${{ secrets.SFTP_USERNAME }}
+        SFTP_PASSWORD: ${{ secrets.SFTP_PASSWORD }}
+        SFTP_HOST: ${{ secrets.SFTP_HOST }}
+        SFTP_PORT: 22
+      run: |
+        ssh-keyscan -t rsa -p $SFTP_PORT $SFTP_HOST >> ~/.ssh/known_hosts
+        rsync -av --rsh="sshpass -p $SFTP_PASSWORD ssh -o StrictHostKeyChecking=no -l $SFTP_USERNAME -p $SFTP_PORT" ./site/ $SFTP_USERNAME@$SFTP_HOST:/
