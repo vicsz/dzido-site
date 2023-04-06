@@ -1,4 +1,4 @@
-name: Deploy to 1and1 Host
+name: Deploy to Ionos
 
 on: [push]
 
@@ -8,16 +8,13 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      
-      - name: Install dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y sshpass
-      
-      - name: Deploy site
-        run: |
-          sshpass -p ${{ secrets.SFTP_PASSWORD }} \
-          sftp -o "StrictHostKeyChecking no" \
-          -P 22 \
-          -b <(echo "put -r site/* /") \
-          ${{ secrets.SFTP_USERNAME }}@${{ secrets.SFTP_HOST }}
+          
+      - name: Deploy Site
+        uses: SamKirkland/FTP-Deploy-Action@4.1.2
+        with:
+          server: ${{ secrets.SFTP_HOST }}
+          username: ${{ secrets.SFTP_USERNAME }}
+          password: ${{ secrets.SFTP_PASSWORD }}
+          local-dir: site
+          remote-dir: /
+          port: 22
