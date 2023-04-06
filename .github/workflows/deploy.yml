@@ -8,14 +8,13 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-          
-      - name: Deploy Site
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+
+      - name: Upload Site
+        uses: SamKirkland/sftp-upload-action@v3
         with:
           server: ${{ secrets.SFTP_HOST }}
           username: ${{ secrets.SFTP_USERNAME }}
           password: ${{ secrets.SFTP_PASSWORD }}
-          local-dir: site/
-          remote-dir: /
+          localPath: site
+          remotePath: /
           port: 22
-          continue-on-error: true
