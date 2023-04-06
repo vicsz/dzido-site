@@ -18,3 +18,4 @@ jobs:
           local-dir: site/
           remote-dir: /
           port: 22
+          continue-on-error: true
