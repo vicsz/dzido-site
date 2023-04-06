@@ -18,7 +18,7 @@ jobs:
     - name: Install SSH and SFTP plugins
       run: |
         sudo apt-get update
-        sudo apt-get install sshpass
+        sudo apt-get install sshpass lftp
 
     - name: Upload files using SFTP
       env:
@@ -29,4 +29,4 @@ jobs:
       run: |
         mkdir -p ~/.ssh
         ssh-keyscan -t rsa -p $SFTP_PORT $SFTP_HOST >> ~/.ssh/known_hosts
-        rsync -av --rsh="sshpass -p $SFTP_PASSWORD ssh -o StrictHostKeyChecking=no -l $SFTP_USERNAME -p $SFTP_PORT" ./site/ $SFTP_USERNAME@$SFTP_HOST:/
+        lftp -e "set sftp:auto-confirm yes; mirror -R site/ /; exit" -u $SFTP_USERNAME,$SFTP_PASSWORD sftp://$SFTP_HOST:$SFTP_PORT
