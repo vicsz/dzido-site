@@ -9,12 +9,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Install lftp
+        run: |
+          sudo apt-get update && sudo apt-get install -y lftp
+
       - name: Upload Site
-        uses: SamKirkland/sftp-upload-action@v3
-        with:
-          server: ${{ secrets.SFTP_HOST }}
-          username: ${{ secrets.SFTP_USERNAME }}
-          password: ${{ secrets.SFTP_PASSWORD }}
-          localPath: site
-          remotePath: /
-          port: 22
+        run: |
+          lftp -u ${{ secrets.SFTP_USERNAME }},${{ secrets.SFTP_PASSWORD }} sftp://${{ secrets.SFTP_HOST }}:22 -e "mirror --reverse --delete site/ /; exit"
+
+      - name: Cleanup
+        run: |
+          rm -rf site
