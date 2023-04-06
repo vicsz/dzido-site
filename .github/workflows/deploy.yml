@@ -1,9 +1,6 @@
 name: Deploy to 1and1 Host
 
-on:
-  push:
-    branches:
-      - master
+on: [push]
 
 jobs:
   deploy:
