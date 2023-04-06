@@ -1,22 +1,26 @@
-name: Upload to 1and1hosting via FTP
+name: Deploy to 1and1 Host
 
 on:
   push:
     branches:
       - master
-  
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
       
-    - name: SFTP upload
-      uses: appleboy/scp-action@master
-      with:
-        host: ${{ secrets.FTP_SERVER }}
-        username: ${{ secrets.FTP_USERNAME }}
-        password: ${{ secrets.FTP_PASSWORD }}
-        source: './site'
-        target: '.'
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y sshpass
+      
+      - name: Deploy site
+        run: |
+          sshpass -p ${{ secrets.SFTP_PASSWORD }} \
+          sftp -o "StrictHostKeyChecking no" \
+          -P 22 \
+          -b <(echo "put -r site/* /") \
+          ${{ secrets.SFTP_USERNAME }}@${{ secrets.SFTP_HOST }}
