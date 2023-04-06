@@ -15,6 +15,6 @@ jobs:
           server: ${{ secrets.SFTP_HOST }}
           username: ${{ secrets.SFTP_USERNAME }}
           password: ${{ secrets.SFTP_PASSWORD }}
-          local-dir: site
+          local-dir: site/
           remote-dir: /
           port: 22
