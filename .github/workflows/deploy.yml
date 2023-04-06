@@ -15,7 +15,7 @@ jobs:
 
       - name: Upload Site
         run: |
-          lftp -u ${{ secrets.SFTP_USERNAME }},${{ secrets.SFTP_PASSWORD }} sftp://${{ secrets.SFTP_HOST }}:22 -e "mirror --reverse --delete site/ /; exit"
+          lftp -u ${{ secrets.SFTP_USERNAME }},${{ secrets.SFTP_PASSWORD }} sftp://${{ secrets.SFTP_HOST }}:22 -e "mirror --reverse --delete site/ /; exit" -o StrictHostKeyChecking=no
 
       - name: Cleanup
         run: |
