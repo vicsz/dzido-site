@@ -1,14 +1,11 @@
 console.log("Welcome to Dzido's website!");
 
-const quoteElement = document.getElementById("quote");
-
-function getRandomQuote() {
+document.addEventListener('DOMContentLoaded', function() {
     fetch('quotes.json')
         .then(response => response.json())
         .then(quotes => {
-            const randomIndex = Math.floor(Math.random() * quotes.length);
-            quoteElement.innerText = quotes[randomIndex];
+            const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+            document.querySelector('.quote').innerText = randomQuote.quote;
+            document.querySelector('.author').innerText = '- ' + randomQuote.author;
         });
-}
-
-getRandomQuote();
+});
