@@ -3,11 +3,11 @@
 ![Deploy to 1and1](https://github.com//vicsz/dzido-site/actions/workflows/deploy.yml/badge.svg)
 
 
-This repository contains the source code for Dzido's personal website, a simple static site built with HTML, CSS, and JavaScript. The website showcases Dzido's interests, bio, photos, ski videos, and a random funny quote section.
+This repository contains the source code for Dzido's personal website, a simple static site built with HTML, CSS, and JavaScript. 
 
 ## Automatic Deployment
 
-The website is automatically deployed to the `dzido.com` domain upon each commit to the master branch. This is achieved using a GitHub Actions script that uploads the contents of the `site` directory to the root directory of the 1and1 host via SFTP. This ensures that the live website stays up to date with the latest changes in the repository.
+The website is automatically deployed to the `dzido.com` domain upon each commit to the master branch. This is achieved using a GitHub Actions script that uploads the contents of the `site` directory to the root directory of the Ionos host via SFTP. This ensures that the live website stays up to date with the latest changes in the repository.
 
 For more information, refer to the `.github/workflows/deploy.yml` file.
 
