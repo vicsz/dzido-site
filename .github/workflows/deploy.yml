@@ -19,6 +19,12 @@ jobs:
       run: |
         sudo apt-get update
         sudo apt-get install sshpass lftp
+    
+    - name: Update index.html with build information
+      run: |
+        RUN_NUMBER="${{ github.run_number }}"
+        BUILD_DATE="$(date -u '+%Y-%m-%d %H:%M:%S %Z')"
+        sed -i "s|<body>|<!-- Build: $RUN_NUMBER - Date: $BUILD_DATE --><body>|" site/index.html
 
     - name: Upload files using SFTP
       env:
