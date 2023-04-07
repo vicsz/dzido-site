@@ -7,47 +7,26 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <header>
-        <h1>Welcome to Dzido's Website</h1>
-    </header>
-    <main>
-        <h2>Random Funny Quote</h2>
-        <div id="quote-container">
-            <blockquote id="quote-text"></blockquote>
-            <cite id="quote-author"></cite>
+    <div class="container">
+        <div class="photo-gallery">
+            <img src="images/dzido1.jpg" alt="Dzido" style="width:100%;max-width:600px;">
+        </div>
+        
+        <div class="quote">
+            <p id="quote"></p>
         </div>
 
         <h2>Dzido's Bio</h2>
-        <p>Dzido is a charismatic individual who brings laughter and light wherever he goes. His enthusiasm for life is contagious, making every adventure more enjoyable. When he's not philosophizing or hosting his podcast, he's busy exploring the world with friends and family.</p>
-		<p>Alongside his love for skiing and philosophy, Dzido openly embraces his passion for stand-up comedy. Although he's not quite ready for the big stage, he's always cracking jokes and making people laugh. Dzido's skiing abilities, on the other hand, leave much to be desired. He may not be the most skilled on the slopes, but his determination and unique style make for some entertaining moments. One thing's for sure: there's never a dull moment with Dzido around!</p>
-		<p>Don't miss out on Dzido's podcast, <a href="https://podcasts.apple.com/ca/podcast/i-think-therefore-i-google/id1517323832" target="_blank" rel="noopener noreferrer">I think therefore I Google</a>, where he engages in insightful philosophical conversations. Browse this site to discover more about Dzido's many interests and hilarious escapades.</p>
+        <p>Meet Dzido, the master of self-deprecation and a firm believer in not taking life too seriously. He fumbles through life with a never-ending enthusiasm, despite being a bit of a mess at times. Philosophy and skiing are his main interests, although he's better at pondering life's big questions than navigating the slopes. But hey, at least he's consistent!</p>
+        <p>When he's not tripping over his own feet, Dzido dabbles in stand-up comedy, sharing his own misadventures with anyone willing to listen. His skiing skills are on par with his comedic talent—more slapstick than finesse. But his unique approach to life makes for some entertaining moments, and there's never a dull moment with Dzido around.</p>
+        <p>For a good laugh and some thought-provoking conversations, check out Dzido's podcast, <a href="https://podcasts.apple.com/ca/podcast/i-think-therefore-i-google/id1517323832" target="_blank" rel="noopener noreferrer">I think therefore I Google</a>. And feel free to explore this site to learn more about Dzido's chaotic, but lovable, existence.</p>
+    </div>
 
-        <h2>Photo Gallery</h2>
-        <div class="photo-gallery">
-            <img src="images/photo1.jpg" alt="Dzido's Photo 1">
-            <img src="images/photo2.jpg" alt="Dzido's Photo 2">
-            <img src="images/photo3.jpg" alt="Dzido's Photo 3">
-        </div>
-
-        <h2>Dzido's Ski Videos</h2>
-		<ul class="video-list">
-			<li><a href="https://www.youtube.com/watch?v=zHhQkZcZrRU" target="_blank" rel="noopener noreferrer">Big White 2019</a> - A fun day skiing on the slopes.</li>
-			<li><a href="https://www.youtube.com/watch?v=1vUM2ps1N5E&t=82s" target="_blank" rel="noopener noreferrer">Zermatt 2018</a> - A beautiful day on the ski hill.</li>
-			<li><a href="https://www.youtube.com/watch?v=IIw8Orzbg5M" target="_blank" rel="noopener noreferrer">Sunshine and Lake Louise 2017</a> - Exploring new trails and adventures.</li>
-			<li><a href="https://www.youtube.com/watch?v=yZaBTM_z_9Y&t=13s" target="_blank" rel="noopener noreferrer">Revelstoke & Big White 2016</a> - Dzido's amazing ski jump.</li>
-			<li><a href="https://www.youtube.com/watch?v=dXmyZ37qoNE&t=91s" target="_blank" rel="noopener noreferrer">Austira 2015</a> - Racing down the mountain.</li>
-			<li><a href="https://www.youtube.com/watch?v=9kwjQ_GKD74&t=20s" target="_blank" rel="noopener noreferrer">Japan POW 2014</a> - Challenging ski runs and obstacles.</li>
-			<li><a href="https://www.youtube.com/watch?v=zs8eIVpLbT4&t=73s" target="_blank" rel="noopener noreferrer">Summer 2012</a> - Mastering the art of skiing.</li>
-			<li><a href="https://www.youtube.com/watch?v=Mx_BDH4vF6w" target="_blank" rel="noopener noreferrer">2012</a> - Skiing through fresh powder.</li>
-			<li><a href="https://www.youtube.com/watch?v=o6-TpfxbJgg&t=19s" target="_blank" rel="noopener noreferrer">2011</a> - Dzido's epic ski trip.</li>
-			<li><a href="https://www.youtube.com/watch?v=aVscmZ06aCc&t=37s" target="_blank" rel="noopener noreferrer">Austria 2011</a> - Enjoying the breathtaking views from the mountain.</li>
-			<li><a href="https://www.youtube.com/watch?v=fFL8VaSIwj4&t=67s" target="_blank" rel="noopener noreferrer">Italy Extreme 2008</a> - Winter wonderland skiing.</li>
-		</ul>
-    </main>
-    <footer>
-        <p>&copy; 2023 Dzido. All rights reserved.</p>
-    </footer>
-
-    <script src="js/scripts.js"></script>
+    <script src="js/quotes.js"></script>
+    <script>
+        const quoteElement = document.getElementById("quote");
+        const randomIndex = Math.floor(Math.random() * quotes.length);
+        quoteElement.innerText = quotes[randomIndex];
+    </script>
 </body>
 </html>
