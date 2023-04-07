@@ -1,5 +1,8 @@
 # Dzido's Website
 
+![Deploy to 1and1](https://github.com//vicsz/dzido-site/actions/workflows/deploy.yml/badge.svg)
+
+
 This repository contains the source code for Dzido's personal website, a simple static site built with HTML, CSS, and JavaScript. The website showcases Dzido's interests, bio, photos, ski videos, and a random funny quote section.
 
 ## Automatic Deployment
