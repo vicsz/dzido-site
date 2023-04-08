@@ -20,3 +20,7 @@ To contribute to this project, follow these steps:
 3. Commit and push your changes to the master branch.
 
 Please ensure that your changes are compatible with the existing code and do not introduce any security vulnerabilities or performance issues.
+
+## Scratchpad Directory
+
+The `scratchpad` directory located in the root of the repository contains random images and work-in-progress assets to be used in the website. The image files in this directory are in the PXD format, which requires the macOS Pixelmator tool for editing. Pixelmator is a powerful, full-featured image editor designed for macOS users. You can download Pixelmator from the Mac App Store or visit the official website at https://www.pixelmator.com/mac/ for more information.
